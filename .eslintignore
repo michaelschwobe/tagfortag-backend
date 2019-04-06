@@ -1,0 +1,8 @@
+# node_modules are ignored by default
+
+# Testing
+/coverage
+
+# Production
+/build
+/src/generated

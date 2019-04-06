@@ -12,6 +12,7 @@
 
 # Production
 /build
+/src/generated
 
 # Environments
 .env.local

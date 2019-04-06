@@ -9,71 +9,42 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest --watch",
-    "watch": "NODE_ENV=development nodemon --inspect -r esm src/index.js",
-    "start": "NODE_ENV=production node -r esm src/index.js"
+    "test:ci": "jest --bail --coverage",
+    "start": "nodemon -e js,graphql -x node -r esm src/index.js",
+    "seed": "prisma seed --env-file .env.development.local",
+    "seed:production": "prisma seed --env-file .env.production.local",
+    "deploy": "prisma deploy --env-file .env.development.local",
+    "deploy:production": "prisma deploy --env-file .env.production.local",
+    "prisma": "prisma"
   },
   "dependencies": {
-    "dotenv-flow": "^0.1.0",
-    "esm": "^3.0.84"
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv-flow": "^0.4.0",
+    "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.5.1",
+    "merge-graphql-schemas": "^1.5.8",
+    "prisma-client-lib": "^1.30.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "eslint": "^5.10.0",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.7.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "jest": "^23.6.0",
-    "nodemon": "^1.18.7",
-    "prettier": "^1.15.3"
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "esm": "^3.2.22",
+    "graphql": "^14.2.1",
+    "graphql-middleware": "^3.0.2",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4",
+    "prisma": "^1.30.2"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "extends": [
-      "airbnb-base",
-      "prettier"
-    ],
-    "plugins": [
-      "import",
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "trailingComma": "all"
-        }
-      ]
-    },
-    "overrides": []
-  },
-  "eslintIgnore": [
-    "/coverage",
-    "/build"
-  ],
-  "jest": {
-    "clearMocks": true,
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all"
+  "engines": {
+    "node": ">=12.1.0",
+    "yarn": "^1.16.0"
   }
 }

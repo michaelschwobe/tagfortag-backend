@@ -1,0 +1,27 @@
+type User {
+  id: ID!
+
+  email: String!
+
+  tags: [Tag!]!
+  bookmarks: [Bookmark!]!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type SignoutMessage {
+  message: String
+}
+
+type Query {
+  me: User
+}
+
+type Mutation {
+  signupUser(email: String!, password: String!): AuthPayload!
+  signinUser(email: String!, password: String!): AuthPayload!
+  signoutUser: SignoutMessage
+}

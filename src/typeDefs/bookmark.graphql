@@ -1,0 +1,21 @@
+type Bookmark {
+  id: ID!
+
+  url: String!
+  name: String!
+
+  author: User!
+  tags: [Tag!]!
+}
+
+type Query {
+  bookmark(id: ID!): Bookmark
+  bookmarks: [Bookmark!]!
+  bookmarksLatest(first: Int): [Bookmark!]!
+}
+
+type Mutation {
+  createBookmark(url: String!, name: String!): Bookmark!
+  updateBookmark(id: ID!, url: String!, name: String!): Bookmark!
+  deleteBookmark(id: ID!): Bookmark!
+}
